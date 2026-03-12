@@ -39,17 +39,17 @@
     to { opacity: 1; transform: translateY(0); }
   }
   .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
-
+ 
   /* Hero */
   .hero { padding: 80px 0 40px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 48px; }
   .hero-photo { flex-shrink: 0; width: 180px; height: 180px; border-radius: 50%; overflow: hidden; background: #e8e8e6; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-  .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; }
   .hero-photo .fallback { font-size: 56px; font-weight: 700; color: #999; }
   .hero-text { flex: 1; }
   .hero-name { font-size: 14px; font-weight: 500; color: var(--accent); margin-bottom: 4px; letter-spacing: 0.5px; }
   .hero h1 { font-size: 40px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 16px; line-height: 1.25; }
   .hero-subtitle { font-size: 17px; color: var(--text-light); line-height: 1.8; max-width: 640px; }
-
+ 
   /* How I Work */
   .how-section { padding: 48px 0; border-bottom: 1px solid var(--border); }
   .section-title { font-size: 22px; font-weight: 700; margin-bottom: 28px; letter-spacing: -0.3px; }
@@ -59,12 +59,12 @@
   .how-step { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: var(--accent); color: #fff; border-radius: 50%; font-size: 13px; font-weight: 600; margin-bottom: 10px; }
   .how-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
   .how-card p { font-size: 12.5px; color: var(--text-light); line-height: 1.6; }
-
+ 
   /* Profile Callout */
   .profile-callout { background: var(--callout-bg); border-left: 3px solid var(--accent); border-radius: 4px; padding: 20px 24px; margin: 32px 0; }
   .profile-callout .label { font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
   .profile-callout p { font-size: 15px; color: var(--text); line-height: 1.8; }
-
+ 
   /* Profile Section */
   .profile-section { padding: 48px 0; border-bottom: 1px solid var(--border); }
   .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
@@ -78,7 +78,7 @@
   .edu-item, .etc-item { margin-bottom: 12px; }
   .edu-name { font-size: 14px; font-weight: 500; }
   .edu-detail { font-size: 13px; color: var(--text-light); }
-
+ 
   /* What I Solve */
   .solve-section { padding: 48px 0; border-bottom: 1px solid var(--border); }
   .solve-card { background: var(--card-bg); border-radius: 8px; padding: 24px; margin-bottom: 16px; transition: background var(--transition); }
@@ -88,7 +88,7 @@
   .solve-card p { font-size: 14px; color: var(--text-light); line-height: 1.7; margin-bottom: 10px; }
   .solve-projects { display: flex; gap: 8px; flex-wrap: wrap; }
   .solve-tag { font-size: 12px; padding: 3px 10px; background: var(--accent-bg); color: var(--accent); border-radius: 4px; font-weight: 500; }
-
+ 
   /* Projects */
   .projects-section { padding: 48px 0; border-bottom: 1px solid var(--border); }
   .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
@@ -104,19 +104,19 @@
   .contribution-bar { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; width: 80px; flex-shrink: 0; }
   .contribution-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; }
   .project-card p { font-size: 13.5px; color: var(--text-light); line-height: 1.6; }
-
+ 
   /* Contact */
   .contact-section { padding: 48px 0 80px; }
   .contact-list { display: flex; gap: 24px; flex-wrap: wrap; }
   .contact-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-light); text-decoration: none; transition: color var(--transition); }
   .contact-item:hover { color: var(--accent); }
   .contact-icon { font-size: 16px; }
-
+ 
   /* Detail pages */
   .detail-nav { padding: 16px 0; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); z-index: 100; }
   .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-light); cursor: pointer; border: none; background: none; font-family: inherit; transition: color var(--transition); }
   .back-btn:hover { color: var(--accent); }
-
+ 
   .detail-hero { padding: 48px 0 28px; border-bottom: 1px solid var(--border); }
   .detail-hero h1 { font-size: 32px; font-weight: 700; margin-bottom: 16px; }
   .detail-meta { display: flex; flex-direction: column; gap: 10px; font-size: 13px; color: var(--text-muted); }
@@ -125,7 +125,7 @@
   .detail-meta .contribution-label { font-size: 12.5px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
   .detail-meta .contribution-bar { width: 60px; height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
   .detail-meta .contribution-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; }
-
+ 
   .detail-section { padding: 32px 0; border-bottom: 1px solid var(--border); }
   .detail-section:last-child { border-bottom: none; padding-bottom: 80px; }
   .detail-section h2 { font-size: 20px; font-weight: 700; margin-bottom: 16px; color: var(--text); }
@@ -133,27 +133,27 @@
   .detail-section ul { list-style: none; padding: 0; }
   .detail-section ul li { padding-left: 16px; position: relative; margin-bottom: 4px; }
   .detail-section ul li::before { content: '•'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
-
+ 
   .detail-callout { background: var(--callout-bg); border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
   .detail-callout p, .detail-callout li { font-size: 14px; color: var(--text); }
   .code-block { background: var(--code-bg); border-radius: 6px; padding: 14px 18px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 13.5px; margin: 12px 0; color: var(--text); line-height: 1.7; white-space: pre-wrap; }
-
+ 
   .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
   .result-card { background: var(--card-bg); border-radius: 8px; padding: 16px 20px; }
   .result-card .label { font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
   .result-card .value { font-size: 18px; font-weight: 700; color: var(--accent); }
   .result-card .desc { font-size: 12.5px; color: var(--text-light); margin-top: 4px; }
-
+ 
   .contribution-list { margin-top: 16px; }
   .contribution-item { margin-bottom: 16px; }
   .contribution-item strong { display: block; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
   .contribution-item p { font-size: 14px; color: var(--text-light); margin: 0; }
-
+ 
   .notice { font-size: 12.5px; color: var(--text-muted); font-style: italic; margin-bottom: 24px; padding: 10px 14px; background: #fef9ef; border-radius: 6px; border-left: 3px solid #f0c36d; }
-
+ 
   .learned-section { background: var(--callout-bg); border-radius: 8px; padding: 24px; margin-top: 16px; }
   .learned-section p { font-size: 14px; color: var(--text-light); line-height: 1.8; }
-
+ 
   /* Appendix */
   .appendix-grid { display: flex; flex-direction: column; gap: 24px; margin-top: 16px; }
   .appendix-item {}
@@ -178,7 +178,7 @@
     font-size: 13px;
   }
   .appendix-placeholder .ph-icon { font-size: 28px; opacity: 0.35; }
-
+ 
   /* Responsive */
   @media (max-width: 768px) {
     .hero { flex-direction: column; text-align: center; gap: 24px; }
@@ -198,7 +198,7 @@
 </style>
 </head>
 <body>
-
+ 
 <!-- ==================== MAIN PAGE ==================== -->
 <div id="main-page" class="page active">
   <div class="container">
@@ -217,7 +217,7 @@
       </div>
     </section>
   </div>
-
+ 
   <div class="container">
     <section class="how-section">
       <h2 class="section-title">How I Work</h2>
@@ -245,7 +245,7 @@
       </div>
     </section>
   </div>
-
+ 
   <div class="container">
     <div class="profile-callout">
       <div class="label">IT Planner / Product Owner</div>
@@ -256,7 +256,7 @@
       </p>
     </div>
   </div>
-
+ 
   <div class="container">
     <section class="profile-section">
       <h2 class="section-title">Profile</h2>
@@ -309,7 +309,7 @@
       </div>
     </section>
   </div>
-
+ 
   <div class="container">
     <section class="solve-section">
       <h2 class="section-title">What I Solve</h2>
@@ -341,7 +341,7 @@
       </div>
     </section>
   </div>
-
+ 
   <div class="container">
     <section class="projects-section">
       <h2 class="section-title">Projects</h2>
@@ -411,7 +411,7 @@
       </div>
     </section>
   </div>
-
+ 
   <div class="container">
     <section class="contact-section">
       <h2 class="section-title">Contact</h2>
@@ -429,7 +429,7 @@
     </section>
   </div>
 </div>
-
+ 
 <!-- ==================== SSP PROJECT ==================== -->
 <div id="ssp-page" class="page">
   <div class="container">
@@ -455,13 +455,13 @@
         </div>
       </div>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Overview</h2>
       <p>SSP는 글로벌 리테일 매장에서 사용하는 다양한 IoT 디바이스를 통합 관리하기 위한 솔루엠의 차세대 플랫폼입니다. ESL, Gateway, Vision Camera, Sensor 등 매장 내 디바이스 데이터를 기반으로 매장 운영 상황을 모니터링하고 문제 발생 시 빠르게 대응할 수 있는 운영 환경을 구축하는 것을 목표로 했습니다.</p>
       <p style="margin-top:12px;">또한 레거시 시스템인 AIMS 운영을 유지하면서도 플랫폼 확장이 가능하도록 구조를 설계해야 하는 미션이 있었습니다. 기존 AIMS의 구조를 분석하고, 매장 운영 관점에서 Store Dashboard와 Digital Twin(Map View) 기능을 기획했습니다.</p>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Problem</h2>
       <p>기존 AIMS 플랫폼의 구조적 한계:</p>
@@ -471,7 +471,7 @@
         <li><strong>Vision 기반 재고 감지 정확도 문제</strong> — 약 30% 수준의 오판 발생. 배터리 수명 문제로 4시간 단위 스케줄 기반 촬영 방식을 사용해 실시간 감지가 어려웠습니다.</li>
       </ul>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Analysis</h2>
       <p>기존 플랫폼의 API 구조와 데이터 모델을 분석하고 매장 운영 관점에서 필요한 정보 구조를 재정의했습니다.</p>
@@ -479,7 +479,7 @@
       <div class="code-block">Customer → Store → Shelf → Device</div>
       <p>이 구조는 디바이스 관리에는 문제가 없었지만, 글로벌 리테일 매장의 층(Floor), 구역(Zone) 등 매장 공간 정보를 체계적으로 표현할 수 없어 공간 기반 모니터링 기능 구현이 어려운 구조였습니다.</p>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Solution</h2>
       <h3 style="font-size:16px;font-weight:600;margin-bottom:12px;">1. Store Dashboard 설계</h3>
@@ -507,7 +507,7 @@
         </ul>
       </div>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Result</h2>
       <div class="result-grid">
@@ -524,7 +524,7 @@
       </div>
       <p style="margin-top:16px;">NRF 2026, EuroShop 등 글로벌 리테일 전시에서 차세대 플랫폼 핵심 데모로 활용되었습니다.</p>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Key Contribution</h2>
       <div class="contribution-list">
@@ -550,7 +550,7 @@
         </div>
       </div>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Appendix</h2>
       <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">기능 설명을 위해 재구성한 예시 화면입니다. 실제 서비스 화면과 다를 수 있습니다.</p>
@@ -579,7 +579,7 @@
     </section>
   </div>
 </div>
-
+ 
 <!-- ==================== AI PROJECT ==================== -->
 <div id="ai-page" class="page">
   <div class="container">
@@ -602,12 +602,12 @@
         </div>
       </div>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Overview</h2>
       <p>생성형 AI 설계 도구를 활용하여 데모 애플리케이션을 빠르게 제작하는 과제에서 시작된 프로젝트입니다. 진행 과정에서 기존 서비스 개발 프로세스의 의사결정 리드타임이 길어지는 문제를 발견하고, PRD 기반 워킹 프로토타입을 생성하여 기능을 검증하는 새로운 개발 프로세스를 실험했습니다.</p>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Problem</h2>
       <p>기존 프로세스:</p>
@@ -618,7 +618,7 @@
         <li><strong>반복적인 수정 비용 발생</strong> — 기획 오류가 개발 단계 이후 발견되어 기획-디자인-개발 수정이 반복</li>
       </ul>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Experiment</h2>
       <h3 style="font-size:16px;font-weight:600;margin-bottom:12px;">Test A — 요구사항 직접 입력</h3>
@@ -626,7 +626,7 @@
       <h3 style="font-size:16px;font-weight:600;margin:24px 0 12px;">Test B — PRD 기반 입력</h3>
       <p>요구사항을 PRD 형태로 재구조화하여 입력. 서비스 목적, 사용자 시나리오, 기능 정의, 화면 구조, 인터랙션 흐름, 기술적 제약을 포함시켰습니다.</p>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Solution</h2>
       <p>PRD 기반 입력 방식이 더 안정적이라는 결과를 기반으로 프로세스를 재정의했습니다.</p>
@@ -635,7 +635,7 @@
       <p style="margin-top:12px;">개선:</p>
       <div class="code-block">PRD 작성 → AI 기반 워킹 프로토타입 생성 → 동작 검증 → 개발 전달</div>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Result</h2>
       <div class="result-grid">
@@ -661,7 +661,7 @@
         </div>
       </div>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Key Contribution</h2>
       <div class="contribution-list">
@@ -672,14 +672,14 @@
         <div class="contribution-item"><strong>사업부 리더십 및 대표이사 대상 보고를 통해 프로세스 변경 공식화</strong></div>
       </div>
     </section>
-
+ 
     <section class="detail-section">
       <h2>What I Learned</h2>
       <div class="learned-section">
         <p>생성형 AI는 단순 작업 자동화 도구가 아닌, 기획과 개발 사이의 검증 단계를 앞당겨 의사결정 구조를 개선하는 도구로 활용될 수 있다는 점을 확인했습니다. 새로운 기술을 단순히 도입하는 것이 아니라 기존 업무 프로세스를 분석하고 조직에 맞는 방식으로 적용하는 것이 중요하다는 점을 배웠습니다.</p>
       </div>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Appendix</h2>
       <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">기능 설명을 위해 재구성한 예시 화면입니다. 실제 서비스 화면과 다를 수 있습니다.</p>
@@ -698,7 +698,7 @@
     </section>
   </div>
 </div>
-
+ 
 <!-- ==================== Q-PORTAL PROJECT ==================== -->
 <div id="qportal-page" class="page">
   <div class="container">
@@ -722,13 +722,13 @@
         </div>
       </div>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Overview</h2>
       <p>현대엔지니어링 현장의 품질 관리 업무를 지원하기 위해 통합 품질관리 포탈(Q-Portal)을 구축하는 SI 프로젝트입니다. 기존에는 현대건설과 현대엔지니어링이 서로 다른 품질 관리 시스템을 분리 운영하고 있어 데이터 연동 문제와 업무 비효율이 발생하고 있었습니다.</p>
       <p style="margin-top:12px;">품질 관리 업무 프로세스 단순화, 품질 지식 데이터 활용 구조 설계, 법규 및 품질 기준 변화에 대응 가능한 시스템 구조 설계를 목표로 했습니다.</p>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Problem</h2>
       <ul>
@@ -738,7 +738,7 @@
         <li><strong>법규 및 품질 기준 변화 대응 어려움</strong> — 품질 시험 설정이 고정 구조로 설계되어 새로운 기준 대응 시 시스템 수정 필요</li>
       </ul>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Solution</h2>
       <h3 style="font-size:16px;font-weight:600;margin-bottom:12px;">1. 자재 공급 승인 프로세스 개선</h3>
@@ -748,7 +748,7 @@
       <h3 style="font-size:16px;font-weight:600;margin:24px 0 12px;">3. 품질 시험 설정 확장</h3>
       <p>압축 강도 시험 최대 3회 → 6회로 확장하여 고층 건물 품질 시험 대응 및 향후 법규 변경 대응이 가능한 유연한 구조를 설계했습니다.</p>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Result</h2>
       <p>운영 서버 반영 전후 2개월 데이터 비교 결과:</p>
@@ -765,7 +765,7 @@
         </div>
       </div>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Key Contribution</h2>
       <div class="contribution-list">
@@ -791,7 +791,7 @@
         </div>
       </div>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Appendix</h2>
       <div class="appendix-grid">
@@ -810,7 +810,7 @@
     </section>
   </div>
 </div>
-
+ 
 <!-- ==================== CUBEX PROJECT ==================== -->
 <div id="cubex-page" class="page">
   <div class="container">
@@ -833,12 +833,12 @@
         </div>
       </div>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Overview</h2>
       <p>CubeX는 Kubernetes 기반의 클라우드 네이티브 PaaS 솔루션으로, 애플리케이션 배포와 운영을 효율적으로 관리할 수 있도록 지원하는 플랫폼입니다. 경북대학교 납품 계약을 기반으로 MVP 검증을 빠르게 진행해야 하는 상황에서 제품 초기 버전을 설계했습니다.</p>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Problem</h2>
       <ul>
@@ -847,7 +847,7 @@
         <li><strong>애플리케이션 관리 기능의 분산</strong> — 생성, 배포, 스케일링, 삭제 등 기능이 분산되어 사용성 저하</li>
       </ul>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Solution</h2>
       <h3 style="font-size:16px;font-weight:600;margin-bottom:12px;">1. One-Step Application 생성 기능</h3>
@@ -857,7 +857,7 @@
       <h3 style="font-size:16px;font-weight:600;margin:24px 0 12px;">3. Auto Scaling 관리 기능</h3>
       <p>최소/최대 Pod 수, CPU 사용률 기준 등의 조건을 설정하여 애플리케이션 스케일링 정책을 관리할 수 있도록 설계했습니다.</p>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Result</h2>
       <div class="detail-callout">
@@ -868,7 +868,7 @@
         </ul>
       </div>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Key Contribution</h2>
       <div class="contribution-list">
@@ -886,7 +886,7 @@
         </div>
       </div>
     </section>
-
+ 
     <section class="detail-section">
       <h2>Appendix</h2>
       <div class="appendix-grid">
@@ -905,7 +905,7 @@
     </section>
   </div>
 </div>
-
+ 
 <script>
   function showProject(id) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
