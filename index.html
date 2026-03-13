@@ -77,7 +77,7 @@
   /* Projects */
   .projects-section { padding: 48px 0; border-bottom: 1px solid var(--border); }
   .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .project-card { background: var(--card-bg); border-radius: 10px; padding: 28px 24px; cursor: pointer; transition: all var(--transition); border: 1px solid transparent; }
+  .project-card { background: var(--card-bg); border-radius: 10px; padding: 28px 24px 48px; cursor: pointer; transition: all var(--transition); border: 1px solid transparent; position: relative; }
   .project-card:hover { background: var(--card-hover); border-color: var(--border); transform: translateY(-2px); box-shadow: var(--shadow); }
   .project-card-title { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
   .project-card-title h3 { font-size: 19px; font-weight: 600; margin: 0; }
@@ -140,6 +140,24 @@
   /* Skills */
   .skill-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
   .skill-chip { font-size: 13px; padding: 5px 12px; background: var(--card-bg); color: var(--text-light); border-radius: 20px; font-weight: 500; border: 1px solid var(--border); }
+  /* Visitor & View badges */
+  #visitor-badge {
+    font-size: 12px;
+    color: var(--text-muted);
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 10px;
+    margin-left: 12px;
+    flex-shrink: 0;
+  }
+  .project-views {
+    position: absolute;
+    bottom: 20px;
+    left: 24px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
   /* Responsive */
   @media (max-width: 768px) {
     .hero { flex-direction: column; text-align: center; gap: 24px; }
@@ -221,6 +239,7 @@
       <a data-section="projects" onclick="scrollToSection('projects')">Projects</a>
       <a data-section="contact"  onclick="scrollToSection('contact')">Contact</a>
     </div>
+    <span id="visitor-badge">오늘 방문자 -명</span>
   </div>
 </nav>
 <!-- ==================== MAIN PAGE ==================== -->
@@ -377,6 +396,7 @@
             <div class="contribution-bar"><div class="contribution-bar-fill" style="width:100%"></div></div>
           </div>
           <p>레거시 시스템의 데이터 구조를 개선하여, 품절 인지 시간을 평균 2시간 이상에서 10분 내외로 단축하고 Vision 기반 재고 인식 오판률을 30%에서 5% 이내로 개선.</p>
+          <div id="views-ssp" class="project-views">조회 -회</div>
         </div>
         <div class="project-card" onclick="showProject('ai')">
           <div class="project-card-title">
@@ -392,6 +412,7 @@
             <div class="contribution-bar"><div class="contribution-bar-fill" style="width:100%"></div></div>
           </div>
           <p>PRD 기반 워킹 프로토타입을 활용하여 기획 검증 리드타임 4주 → 1~2주 단축.</p>
+          <div id="views-ai" class="project-views">조회 -회</div>
         </div>
         <div class="project-card" onclick="showProject('qportal')">
           <div class="project-card-title">
@@ -407,6 +428,7 @@
             <div class="contribution-bar"><div class="contribution-bar-fill" style="width:70%"></div></div>
           </div>
           <p>통합 품질관리 포탈 구축. 보고서 작성 53% 감소, 결재 반려 90% 감소.</p>
+          <div id="views-qportal" class="project-views">조회 -회</div>
         </div>
         <div class="project-card" onclick="showProject('cubex')">
           <div class="project-card-title">
@@ -422,6 +444,7 @@
             <div class="contribution-bar"><div class="contribution-bar-fill" style="width:60%"></div></div>
           </div>
           <p>Kubernetes 기반 클라우드 네이티브 PaaS 솔루션 UX 구조 설계 및 주요 기능 기획.</p>
+          <div id="views-cubex" class="project-views">조회 -회</div>
         </div>
       </div>
     </section>
@@ -1089,6 +1112,82 @@
       if (window.pageYOffset < 80) updateGnbActive('');
     });
   })();
+</script>
+
+<!-- ==================== FIREBASE TRACKER ==================== -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getDatabase, ref, runTransaction, onValue, get, set } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBiWQBa8JDd2vWI3Xt8j7MkHYOOFyzIrHg",
+    authDomain: "yeom-tracker.firebaseapp.com",
+    databaseURL: "https://yeom-tracker-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "yeom-tracker",
+    storageBucket: "yeom-tracker.firebasestorage.app",
+    messagingSenderId: "123068953287",
+    appId: "1:123068953287:web:197c70749c6c61d34584e2"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  // ── 오늘 날짜 키 (YYYY-MM-DD) ──
+  function todayKey() {
+    return new Date().toISOString().slice(0, 10);
+  }
+
+  // ── 일일 방문자 카운트 (세션 기준 중복 제거) ──
+  const visitedKey = 'pf_visited_' + todayKey();
+  if (!sessionStorage.getItem(visitedKey)) {
+    sessionStorage.setItem(visitedKey, '1');
+    const dailyRef = ref(db, 'stats/daily/' + todayKey());
+    runTransaction(dailyRef, (v) => (v || 0) + 1);
+  }
+
+  // ── 프로젝트 조회수 카운트 ──
+  window._trackProjectView = function(id) {
+    const viewRef = ref(db, 'stats/projects/' + id);
+    runTransaction(viewRef, (v) => (v || 0) + 1);
+  };
+
+  // ── showProject 래핑: 조회수 트래킹 연동 ──
+  const _origShowProject = window.showProject;
+  window.showProject = function(id) {
+    _origShowProject(id);
+    window._trackProjectView(id);
+  };
+
+  // ── 오늘 방문자 수 읽어서 표시 ──
+  function renderVisitorBadge() {
+    const statsRef = ref(db, 'stats/daily/' + todayKey());
+    onValue(statsRef, (snap) => {
+      const count = snap.val() || 0;
+      const badge = document.getElementById('visitor-badge');
+      if (badge) badge.textContent = '오늘 방문자 ' + count + '명';
+    });
+  }
+
+  // ── 프로젝트별 조회수 읽어서 표시 ──
+  function renderProjectViews() {
+    const projects = ['ssp', 'ai', 'qportal', 'cubex'];
+    projects.forEach(function(id) {
+      const vRef = ref(db, 'stats/projects/' + id);
+      onValue(vRef, (snap) => {
+        const count = snap.val() || 0;
+        const el = document.getElementById('views-' + id);
+        if (el) el.textContent = '조회 ' + count + '회';
+      });
+    });
+  }
+
+  // DOM 준비 후 실행
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => { renderVisitorBadge(); renderProjectViews(); });
+  } else {
+    renderVisitorBadge();
+    renderProjectViews();
+  }
 </script>
 </body>
 </html>
