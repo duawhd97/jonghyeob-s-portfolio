@@ -133,26 +133,13 @@
   .appendix-grid { display: flex; flex-direction: column; gap: 24px; margin-top: 16px; }
   .appendix-item {}
   .appendix-label { font-size: 15px; font-weight: 500; color: var(--text-muted); margin-bottom: 8px; }
-  .appendix-img-wrap {
-    width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    background: var(--card-bg);
-  }
+  .appendix-img-wrap { width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--card-bg); }
   .appendix-img-wrap img { width: 100%; display: block; }
-  .appendix-placeholder {
-    width: 100%;
-    height: 220px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    color: var(--text-muted);
-    font-size: 15px;
-  }
+  .appendix-placeholder { width: 100%; height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--text-muted); font-size: 15px; }
   .appendix-placeholder .ph-icon { font-size: 28px; opacity: 0.35; }
+  /* Skills */
+  .skill-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .skill-chip { font-size: 13px; padding: 5px 12px; background: var(--card-bg); color: var(--text-light); border-radius: 20px; font-weight: 500; border: 1px solid var(--border); }
   /* Responsive */
   @media (max-width: 768px) {
     .hero { flex-direction: column; text-align: center; gap: 24px; }
@@ -176,59 +163,13 @@
     .result-card .value { font-size: 20px; }
   }
   /* GNB */
-  #gnb {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 1000;
-    height: 52px;
-    background: rgba(255,255,255,0.88);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(233,233,231,0.8);
-    display: flex;
-    align-items: center;
-  }
-  .gnb-inner {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 24px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-  .gnb-brand {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text);
-    text-decoration: none;
-    letter-spacing: -0.2px;
-    cursor: pointer;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
+  #gnb { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 52px; background: rgba(255,255,255,0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(233,233,231,0.8); display: flex; align-items: center; }
+  .gnb-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .gnb-brand { font-size: 14px; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.2px; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
   .gnb-brand:hover { color: var(--accent); }
-  .gnb-links {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    overflow-x: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+  .gnb-links { display: flex; align-items: center; gap: 4px; overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none; }
   .gnb-links::-webkit-scrollbar { display: none; }
-  .gnb-links a {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-light);
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: color 0.15s, background 0.15s;
-  }
+  .gnb-links a { font-size: 13px; font-weight: 500; color: var(--text-light); text-decoration: none; padding: 5px 10px; border-radius: 6px; cursor: pointer; white-space: nowrap; transition: color 0.15s, background 0.15s; }
   .gnb-links a:hover { color: var(--text); background: var(--card-bg); }
   .gnb-links a.gnb-active { color: var(--accent); background: var(--accent-bg); font-weight: 600; }
   body { padding-top: 52px; }
@@ -237,86 +178,24 @@
     .gnb-links a { font-size: 12px; padding: 5px 8px; }
   }
   /* Scroll Progress Bar */
-  #scroll-progress {
-    position: absolute;
-    bottom: 0; left: 0;
-    height: 2px;
-    width: 0%;
-    background: linear-gradient(90deg, var(--accent), #56a0f5);
-    border-radius: 0 2px 2px 0;
-    transition: width 0.1s linear;
-    z-index: 1001;
-  }
+  #scroll-progress { position: absolute; bottom: 0; left: 0; height: 2px; width: 0%; background: linear-gradient(90deg, var(--accent), #56a0f5); border-radius: 0 2px 2px 0; transition: width 0.1s linear; z-index: 1001; }
   /* Stats Section */
-  .stats-section {
-    padding: 40px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-  }
-  .stat-item {
-    text-align: center;
-    padding: 20px 16px;
-    position: relative;
-  }
-  .stat-item + .stat-item::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 20%; bottom: 20%;
-    width: 1px;
-    background: var(--border);
-  }
-  .stat-value {
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1.1;
-    letter-spacing: -1px;
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 2px;
-  }
-  .stat-value .suffix {
-    font-size: 22px;
-    font-weight: 600;
-  }
-  .stat-label {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-top: 6px;
-    line-height: 1.5;
-  }
-  .stat-item {
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background var(--transition);
-  }
+  .stats-section { padding: 40px 0; border-bottom: 1px solid var(--border); }
+  .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .stat-item { text-align: center; padding: 20px 16px; position: relative; cursor: pointer; border-radius: 8px; transition: background var(--transition); }
+  .stat-item + .stat-item::before { content: ''; position: absolute; left: 0; top: 20%; bottom: 20%; width: 1px; background: var(--border); }
   .stat-item:hover { background: var(--card-bg); }
-  .stat-hint {
-    font-size: 12px;
-    color: var(--accent);
-    opacity: 0;
-    margin-top: 8px;
-    transition: opacity 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-  }
+  .stat-value { font-size: 36px; font-weight: 700; color: var(--accent); line-height: 1.1; letter-spacing: -1px; display: flex; align-items: baseline; justify-content: center; gap: 2px; }
+  .stat-value .suffix { font-size: 22px; font-weight: 600; }
+  .stat-label { font-size: 13px; color: var(--text-muted); margin-top: 6px; line-height: 1.5; }
+  .stat-hint { font-size: 12px; color: var(--accent); opacity: 0; margin-top: 8px; transition: opacity 0.2s ease; display: flex; align-items: center; justify-content: center; gap: 3px; }
   .stat-item:hover .stat-hint { opacity: 1; }
-  /* project card highlight flash */
   @keyframes cardFlash {
     0%   { box-shadow: 0 0 0 0 rgba(47,128,237,0); border-color: transparent; }
     30%  { box-shadow: 0 0 0 4px rgba(47,128,237,0.25); border-color: var(--accent); }
     100% { box-shadow: 0 0 0 0 rgba(47,128,237,0); border-color: transparent; }
   }
-  .project-card.flash {
-    animation: cardFlash 1.0s ease forwards;
-  }
+  .project-card.flash { animation: cardFlash 1.0s ease forwards; }
   @media (max-width: 768px) {
     .stats-grid { grid-template-columns: repeat(3, 1fr); }
     .stat-value { font-size: 30px; }
@@ -497,7 +376,7 @@
             <span>기여도 100%</span>
             <div class="contribution-bar"><div class="contribution-bar-fill" style="width:100%"></div></div>
           </div>
-          <p>평균 2시간 이상 소요되던 품절 인지 시간을 10분 내외로 단축하고, Vision 카메라의 재고 인식 오판률을 30%에서 5% 이내로 개선</p>
+          <p>레거시 시스템의 데이터 구조를 개선하여, 품절 인지 시간을 평균 2시간 이상에서 10분 내외로 단축하고 Vision 기반 재고 인식 오판률을 30%에서 5% 이내로 개선.</p>
         </div>
         <div class="project-card" onclick="showProject('ai')">
           <div class="project-card-title">
@@ -557,7 +436,7 @@
         <a class="contact-item" href="tel:+821080600219">
           <span class="contact-icon">&#128241;</span> +82 10-8060-0219
         </a>
-        <a class="contact-item" href="www.linkedin.com/in/종협-염-51986a326" target="_blank">
+        <a class="contact-item" href="https://www.linkedin.com/in/%EC%A2%85%ED%98%91-%EC%97%BC-51986a326" target="_blank">
           <span class="contact-icon">&#128279;</span> LinkedIn
         </a>
       </div>
@@ -681,56 +560,51 @@
       </div>
     </section>
     <section class="detail-section">
+      <h2>Skills</h2>
+      <div class="skill-chips">
+        <span class="skill-chip">프로젝트 관리</span>
+        <span class="skill-chip">이해관계자 커뮤니케이션</span>
+        <span class="skill-chip">UX 기획</span>
+        <span class="skill-chip">API 분석</span>
+        <span class="skill-chip">데이터 구조 분석</span>
+      </div>
+    </section>
+    <section class="detail-section">
       <h2>Appendix</h2>
       <div class="appendix-grid">
         <div class="appendix-item">
           <div class="appendix-label">Store Dashboard</div>
           <div class="appendix-img-wrap">
             <img src="img_ssp_dashboard.jpg" alt="Store Dashboard" onerror="this.style.display='none'; this.parentElement.querySelector('.appendix-placeholder').style.display='flex';">
-            <div class="appendix-placeholder" style="display:none;">
-              <span class="ph-icon">&#128444;&#65039;</span>
-              <span>img_ssp_dashboard.jpg</span>
-            </div>
+            <div class="appendix-placeholder" style="display:none;"><span class="ph-icon">&#128444;&#65039;</span><span>img_ssp_dashboard.jpg</span></div>
           </div>
         </div>
         <div class="appendix-item">
           <div class="appendix-label">Digital Twin Map View</div>
           <div class="appendix-img-wrap">
             <img src="img_ssp_mapview.jpg" alt="Map View" onerror="this.style.display='none'; this.parentElement.querySelector('.appendix-placeholder').style.display='flex';">
-            <div class="appendix-placeholder" style="display:none;">
-              <span class="ph-icon">&#128444;&#65039;</span>
-              <span>img_ssp_mapview.jpg</span>
-            </div>
+            <div class="appendix-placeholder" style="display:none;"><span class="ph-icon">&#128444;&#65039;</span><span>img_ssp_mapview.jpg</span></div>
           </div>
         </div>
         <div class="appendix-item">
           <div class="appendix-label">Aims 개선 IA</div>
           <div class="appendix-img-wrap">
             <img src="img_ssp_aims_ia.jpg" alt="Aims 개선 IA" onerror="this.style.display='none'; this.parentElement.querySelector('.appendix-placeholder').style.display='flex';">
-            <div class="appendix-placeholder" style="display:none;">
-              <span class="ph-icon">&#128444;&#65039;</span>
-              <span>img_ssp_aims_ia.jpg</span>
-            </div>
+            <div class="appendix-placeholder" style="display:none;"><span class="ph-icon">&#128444;&#65039;</span><span>img_ssp_aims_ia.jpg</span></div>
           </div>
         </div>
         <div class="appendix-item">
           <div class="appendix-label">Aims 구조 분석 문서</div>
           <div class="appendix-img-wrap">
             <img src="img_ssp_aims_structure.jpg" alt="Aims 구조 분석 문서" onerror="this.style.display='none'; this.parentElement.querySelector('.appendix-placeholder').style.display='flex';">
-            <div class="appendix-placeholder" style="display:none;">
-              <span class="ph-icon">&#128444;&#65039;</span>
-              <span>img_ssp_aims_structure.jpg</span>
-            </div>
+            <div class="appendix-placeholder" style="display:none;"><span class="ph-icon">&#128444;&#65039;</span><span>img_ssp_aims_structure.jpg</span></div>
           </div>
         </div>
         <div class="appendix-item">
           <div class="appendix-label">MapView UI 요소 &amp; API 연동</div>
           <div class="appendix-img-wrap">
             <img src="img_ssp_mapview_api.jpg" alt="MapView UI 요소와 API 연동" onerror="this.style.display='none'; this.parentElement.querySelector('.appendix-placeholder').style.display='flex';">
-            <div class="appendix-placeholder" style="display:none;">
-              <span class="ph-icon">&#128444;&#65039;</span>
-              <span>img_ssp_mapview_api.jpg</span>
-            </div>
+            <div class="appendix-placeholder" style="display:none;"><span class="ph-icon">&#128444;&#65039;</span><span>img_ssp_mapview_api.jpg</span></div>
           </div>
         </div>
       </div>
@@ -822,7 +696,7 @@
       </div>
     </section>
     <section class="detail-section">
-        <h2>Key Contribution</h2>
+      <h2>Key Contribution</h2>
       <div class="contribution-list">
         <div class="contribution-item">
           <strong>1. AI 설계 도구 활용 방식 실험 설계</strong>
@@ -853,16 +727,23 @@
       </div>
     </section>
     <section class="detail-section">
+      <h2>Skills</h2>
+      <div class="skill-chips">
+        <span class="skill-chip">실험 설계</span>
+        <span class="skill-chip">PRD 작성</span>
+        <span class="skill-chip">AI 기반 프로토타이핑</span>
+        <span class="skill-chip">개발 프로세스 설계</span>
+        <span class="skill-chip">기술 커뮤니케이션</span>
+      </div>
+    </section>
+    <section class="detail-section">
       <h2>Appendix</h2>
       <div class="appendix-grid">
         <div class="appendix-item">
           <div class="appendix-label">PRD 기반 워킹 프로토타입 비교</div>
           <div class="appendix-img-wrap">
             <img src="img_ai.jpg" alt="AI 프로토타입 검증 예시" onerror="this.style.display='none'; this.parentElement.querySelector('.appendix-placeholder').style.display='flex';">
-            <div class="appendix-placeholder" style="display:none;">
-              <span class="ph-icon">&#128444;&#65039;</span>
-              <span>img_ai.jpg</span>
-            </div>
+            <div class="appendix-placeholder" style="display:none;"><span class="ph-icon">&#128444;&#65039;</span><span>img_ai.jpg</span></div>
           </div>
         </div>
       </div>
@@ -966,16 +847,23 @@
       </div>
     </section>
     <section class="detail-section">
+      <h2>Skills</h2>
+      <div class="skill-chips">
+        <span class="skill-chip">요구사항 분석</span>
+        <span class="skill-chip">QA 관리</span>
+        <span class="skill-chip">테스트 진행 관리</span>
+        <span class="skill-chip">고객사 커뮤니케이션</span>
+        <span class="skill-chip">문서화</span>
+      </div>
+    </section>
+    <section class="detail-section">
       <h2>Appendix</h2>
       <div class="appendix-grid">
         <div class="appendix-item">
           <div class="appendix-label">통합 품질관리 포탈 예시 화면</div>
           <div class="appendix-img-wrap">
             <img src="img_qportal.jpg" alt="품질관리 포탈 예시" onerror="this.style.display='none'; this.parentElement.querySelector('.appendix-placeholder').style.display='flex';">
-            <div class="appendix-placeholder" style="display:none;">
-              <span class="ph-icon">&#128444;&#65039;</span>
-              <span>img_qportal.jpg</span>
-            </div>
+            <div class="appendix-placeholder" style="display:none;"><span class="ph-icon">&#128444;&#65039;</span><span>img_qportal.jpg</span></div>
           </div>
         </div>
       </div>
@@ -1057,16 +945,23 @@
       </div>
     </section>
     <section class="detail-section">
+      <h2>Skills</h2>
+      <div class="skill-chips">
+        <span class="skill-chip">MVP 기획</span>
+        <span class="skill-chip">UX 설계</span>
+        <span class="skill-chip">디자인 시스템 기획</span>
+        <span class="skill-chip">기술 문서 작성</span>
+        <span class="skill-chip">이해관계자 협업</span>
+      </div>
+    </section>
+    <section class="detail-section">
       <h2>Appendix</h2>
       <div class="appendix-grid">
         <div class="appendix-item">
           <div class="appendix-label">CubeX 플랫폼 예시 화면</div>
           <div class="appendix-img-wrap">
             <img src="img_cubex.jpg" alt="CubeX 예시" onerror="this.style.display='none'; this.parentElement.querySelector('.appendix-placeholder').style.display='flex';">
-            <div class="appendix-placeholder" style="display:none;">
-              <span class="ph-icon">&#128444;&#65039;</span>
-              <span>img_cubex.jpg</span>
-            </div>
+            <div class="appendix-placeholder" style="display:none;"><span class="ph-icon">&#128444;&#65039;</span><span>img_cubex.jpg</span></div>
           </div>
         </div>
       </div>
@@ -1092,9 +987,7 @@
   (function() {
     var counters = document.querySelectorAll('.count-up');
     var animated = new Set();
-
     function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
-
     function animateCounter(el) {
       if (animated.has(el)) return;
       animated.add(el);
@@ -1111,34 +1004,26 @@
       }
       requestAnimationFrame(step);
     }
-
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) animateCounter(entry.target);
       });
     }, { threshold: 0.4 });
-
     counters.forEach(function(el) { observer.observe(el); });
   })();
 
   // ── Stat → Project Card 연결 ─────────────────────
   function highlightProject(id) {
-    // 메인 페이지로 복귀
     document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
     document.getElementById('main-page').classList.add('active');
     setGnbDetailMode(false);
-
-    // 해당 카드 찾기 (onclick="showProject('ssp')" 패턴으로 매칭)
     var card = document.querySelector('.project-card[onclick="showProject(\'' + id + '\')"]');
     if (!card) return;
-
     var offset = card.getBoundingClientRect().top + window.pageYOffset - 80;
     window.scrollTo({ top: offset, behavior: 'smooth' });
-
-    // 카드 flash 효과 — 스크롤이 끝난 뒤 실행
     setTimeout(function() {
       card.classList.remove('flash');
-      void card.offsetWidth; // reflow
+      void card.offsetWidth;
       card.classList.add('flash');
     }, 500);
   }
@@ -1156,7 +1041,6 @@
     setGnbDetailMode(false);
   }
   function scrollToSection(sectionId) {
-    // 메인 페이지로 복귀
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('main-page').classList.add('active');
     setGnbDetailMode(false);
@@ -1179,17 +1063,14 @@
       a.style.pointerEvents = isDetail ? '' : '';
     });
   }
-  // 스크롤 스파이 (IntersectionObserver)
+  // 스크롤 스파이
   (function() {
     var sections = ['how','profile','projects','contact'];
     var options = { rootMargin: '-52px 0px -60% 0px', threshold: 0 };
-    var current = '';
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
-        var id = entry.target.id.replace('section-', '');
         if (entry.isIntersecting) {
-          current = id;
-          updateGnbActive(current);
+          updateGnbActive(entry.target.id.replace('section-', ''));
         }
       });
     }, options);
@@ -1199,14 +1080,9 @@
     });
     function updateGnbActive(activeId) {
       document.querySelectorAll('.gnb-links a').forEach(function(a) {
-        if (a.getAttribute('data-section') === activeId) {
-          a.classList.add('gnb-active');
-        } else {
-          a.classList.remove('gnb-active');
-        }
+        a.classList.toggle('gnb-active', a.getAttribute('data-section') === activeId);
       });
     }
-    // 최상단 스크롤 시 active 해제
     window.addEventListener('scroll', function() {
       var mainPage = document.getElementById('main-page');
       if (!mainPage || !mainPage.classList.contains('active')) return;
