@@ -94,8 +94,60 @@
   .contact-icon { font-size: 19px; }
   /* Detail pages */
   .detail-nav { padding: 12px 0; border-bottom: 1px solid var(--border); position: sticky; top: 52px; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 100; }
-  .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; color: var(--text-light); cursor: pointer; border: none; background: none; font-family: inherit; transition: color var(--transition); }
-  .back-btn:hover { color: var(--accent); }
+  .detail-nav .container { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: #fff;
+    font-size: 18px;
+    color: var(--text-light);
+    cursor: pointer;
+    font-family: inherit;
+    transition: color var(--transition), border-color var(--transition), background var(--transition);
+    flex-shrink: 0;
+  }
+  .back-btn:hover { color: var(--accent); border-color: rgba(47,128,237,0.18); background: var(--accent-bg); }
+  .detail-subnav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+  }
+  .detail-subnav-inner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-width: 0;
+  }
+  .detail-subnav-link {
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--text-light);
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background var(--transition), color var(--transition), border-color var(--transition);
+  }
+  .detail-subnav-link:hover {
+    color: var(--text);
+    background: var(--card-bg);
+  }
+  .detail-subnav-link.active {
+    color: var(--accent);
+    background: var(--accent-bg);
+    border-color: rgba(47,128,237,0.18);
+  }
   .detail-hero { padding: 48px 0 28px; border-bottom: 1px solid var(--border); }
   .detail-hero h1 { font-size: 38px; font-weight: 700; margin-bottom: 16px; }
   .detail-meta { display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: var(--text-muted); }
@@ -253,6 +305,13 @@
     .detail-hero h1 { font-size: 30px; }
     .detail-section h2 { font-size: 21px; }
     .detail-section p, .detail-section li { font-size: 16px; }
+    .detail-subnav-inner {
+      gap: 6px;
+    }
+    .detail-subnav-link {
+      padding: 8px 10px;
+      font-size: 12px;
+    }
   }
   @media (max-width: 480px) {
     .hero h1 { font-size: 30px; }
@@ -260,6 +319,11 @@
     .container { padding: 0 16px; }
     .result-card .value { font-size: 20px; }
     .feedback-modal { padding: 24px 18px 20px; }
+    .detail-nav .container { gap: 10px; }
+    .detail-subnav-link {
+      font-size: 11px;
+      padding: 7px 9px;
+    }
   }
   /* GNB */
   #gnb { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 52px; background: rgba(255,255,255,0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(233,233,231,0.8); display: flex; align-items: center; }
@@ -545,7 +609,7 @@
 <div id="ssp-page" class="page">
   <nav class="detail-nav">
     <div class="container">
-      <button class="back-btn" onclick="showMain()">&#8592; 이전 페이지 돌아가기</button>
+      <button class="back-btn" onclick="showMain()" aria-label="이전 페이지 돌아가기">&#8592;</button>
     </div>
   </nav>
   <div class="container">
@@ -723,7 +787,7 @@
 <div id="ai-page" class="page">
   <nav class="detail-nav">
     <div class="container">
-      <button class="back-btn" onclick="showMain()">&#8592; 이전 페이지 돌아가기</button>
+      <button class="back-btn" onclick="showMain()" aria-label="이전 페이지 돌아가기">&#8592;</button>
     </div>
   </nav>
   <div class="container">
@@ -859,7 +923,7 @@
 <div id="qportal-page" class="page">
   <nav class="detail-nav">
     <div class="container">
-      <button class="back-btn" onclick="showMain()">&#8592; 이전 페이지 돌아가기</button>
+      <button class="back-btn" onclick="showMain()" aria-label="이전 페이지 돌아가기">&#8592;</button>
     </div>
   </nav>
   <div class="container">
@@ -973,7 +1037,7 @@
 <div id="cubex-page" class="page">
   <nav class="detail-nav">
     <div class="container">
-      <button class="back-btn" onclick="showMain()">&#8592; 이전 페이지 돌아가기</button>
+      <button class="back-btn" onclick="showMain()" aria-label="이전 페이지 돌아가기">&#8592;</button>
     </div>
   </nav>
   <div class="container">
@@ -1126,6 +1190,81 @@
     if (resetStatus && status) status.textContent = '';
   }
 
+  function detailSectionId(pageId, index) {
+    return pageId.replace('-page', '') + '-section-' + index;
+  }
+
+  function buildDetailSubnavs() {
+    document.querySelectorAll('.page[id$="-page"]:not(#main-page)').forEach(function(page) {
+      if (page.querySelector('.detail-subnav')) return;
+
+      var sections = page.querySelectorAll('.detail-section h2');
+      if (!sections.length) return;
+
+      var detailNav = page.querySelector('.detail-nav');
+      if (!detailNav) return;
+      var detailNavContainer = detailNav.querySelector('.container');
+      if (!detailNavContainer) return;
+
+      var subnav = document.createElement('div');
+      subnav.className = 'detail-subnav';
+      subnav.setAttribute('data-page-id', page.id);
+
+      var inner = document.createElement('div');
+      inner.className = 'detail-subnav-inner';
+
+      sections.forEach(function(title, index) {
+        var section = title.closest('.detail-section');
+        var sectionId = detailSectionId(page.id, index);
+        section.id = sectionId;
+
+        var link = document.createElement('a');
+        link.className = 'detail-subnav-link';
+        link.href = '#' + sectionId;
+        link.setAttribute('data-target', sectionId);
+        link.textContent = title.textContent.trim();
+        inner.appendChild(link);
+      });
+
+      subnav.appendChild(inner);
+      detailNavContainer.appendChild(subnav);
+    });
+  }
+
+  function setActiveDetailSubnav(sectionId) {
+    document.querySelectorAll('.detail-subnav-link').forEach(function(link) {
+      link.classList.toggle('active', link.getAttribute('data-target') === sectionId);
+    });
+  }
+
+  function getActiveDetailNavOffset() {
+    var gnb = document.getElementById('gnb');
+    var detailNav = document.querySelector('.page.active .detail-nav');
+    var gnbHeight = gnb ? gnb.offsetHeight : 52;
+    var detailNavHeight = detailNav ? detailNav.offsetHeight : 0;
+    return gnbHeight + detailNavHeight + 16;
+  }
+
+  function updateDetailSubnavOnScroll() {
+    var activePage = document.querySelector('.page.active[id$="-page"]:not(#main-page)');
+    if (!activePage) return;
+
+    var sections = activePage.querySelectorAll('.detail-section[id]');
+    if (!sections.length) return;
+
+    var currentSectionId = sections[0].id;
+    var threshold = getActiveDetailNavOffset() + 24;
+
+    sections.forEach(function(section) {
+      var rect = section.getBoundingClientRect();
+      if (rect.top <= threshold) {
+        currentSectionId = section.id;
+      }
+    });
+
+    setActiveDetailSubnav(currentSectionId);
+  }
+
   function maybeTrackProjectReadComplete() {
     var state = window.__projectEngagement;
     if (!state.activeProjectId || state.readThresholdReached) return;
@@ -1139,7 +1278,7 @@
     if (scrollableHeight <= 0) return;
 
     var progress = scrollTop / scrollableHeight;
-    if (progress >= 0.95) {
+    if (progress >= 0.9) {
       state.readThresholdReached = true;
       if (typeof window._handleProjectReadThreshold === 'function') {
         window._handleProjectReadThreshold(state.activeProjectId);
@@ -1185,6 +1324,20 @@
     if (event.target === this) hideFeedbackModal(false);
   });
 
+  document.addEventListener('click', function(event) {
+    var subnavLink = event.target.closest('.detail-subnav-link');
+    if (!subnavLink) return;
+
+    event.preventDefault();
+    var targetId = subnavLink.getAttribute('data-target');
+    var target = document.getElementById(targetId);
+    if (!target) return;
+
+    var offset = target.getBoundingClientRect().top + window.pageYOffset - getActiveDetailNavOffset();
+    window.scrollTo({ top: offset, behavior: 'smooth' });
+    setActiveDetailSubnav(targetId);
+  });
+
   document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') hideFeedbackModal(false);
   });
@@ -1197,6 +1350,7 @@
       var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
       bar.style.width = Math.min(pct, 100) + '%';
+      updateDetailSubnavOnScroll();
       maybeTrackProjectReadComplete();
     }
     window.addEventListener('scroll', updateProgress, { passive: true });
@@ -1253,6 +1407,7 @@
     resetProjectEngagement(id);
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setGnbDetailMode(true);
+    setTimeout(updateDetailSubnavOnScroll, 80);
   }
   function showMain() {
     document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
@@ -1260,6 +1415,7 @@
     resetProjectEngagement(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setGnbDetailMode(false);
+    setActiveDetailSubnav('');
   }
   function scrollToSection(sectionId) {
     document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
@@ -1311,6 +1467,12 @@
       if (window.pageYOffset < 80) updateGnbActive('');
     });
   })();
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildDetailSubnavs);
+  } else {
+    buildDetailSubnavs();
+  }
 </script>
 
 <!-- ==================== FIREBASE TRACKER ==================== -->
